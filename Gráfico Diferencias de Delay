@@ -1,0 +1,16 @@
+x = 1:1:250;
+baseLine = 0;
+index = 1:250;
+
+
+plot(x,y,'b');
+hold on;
+h1 = fill(x(index([1 1:end end])),...      
+          [baseLine y(index) baseLine],...
+          'b','EdgeColor','none');
+plot(x,s,'r');                              
+h2 = fill(x(index([1 1:end end])),...        
+          [baseLine s(index) baseLine],...
+          'r','EdgeColor','none');
+set(h2,'facealpha',.5);
+plot(x(index),baseLine.*ones(size(index)),'r');  
