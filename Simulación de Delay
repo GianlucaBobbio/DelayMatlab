@@ -1,0 +1,19 @@
+m=30;
+g=0.7;
+r=3;
+delayed=zeros(400,1);
+for n=1:1:100;
+ ran = rand();
+ y(n) = sin(2*pi*n/100*ran);     % Simula entrada de audio.
+ s(n) = g*delayed(m*r);
+ delayed=[0;delayed(1:length(delayed)-1)];
+ for d=1:r
+  delayed((d-1)*m+1)=delayed((d-1)*m+1) + d/r*sin(2*pi*n/100*ran); 
+ end;
+end;
+for n=100:1:250;
+ y(n) = 0;
+ s(n) = g*delayed(m*r);
+ delayed=[0;delayed(1:length(delayed)-1)];
+end;
+plot((1:1:250),y,(1:1:250),s, '--r');
